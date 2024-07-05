@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO Counter</title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h1>Socket.io demo app</h1>
+    <div id="counter">0</div>
+    <button id="incrementBtn">Increment Counter</button>
+
+    <script>
+      var socket = io();
+      var counterDiv = document.getElementById("counter");
+      var incrementBtn = document.getElementById("incrementBtn");
+
+      socket.on("update counter", (counter) => {
+        counterDiv.innerText = counter;
+      });
+
+      incrementBtn.addEventListener("click", function () {
+        socket.emit("increment counter");
+      });
+    </script>
+  </body>
+</html>
